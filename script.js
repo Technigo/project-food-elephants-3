@@ -27,6 +27,18 @@ const filterPrice = (minPrice, maxPrice) => {
   generateRestHTML(filteredArray);
 };
 
+const hasOnlineDelivery = document.getElementById("onlineDelivery");
+hasOnlineDelivery.onchange = () => {
+  const filteredArray = globalArray.restaurants
+  if (hasOnlineDelivery.checked) {
+    filteredArray = globalArray.restaurants.filter(
+    (restaurant) =>
+      restaurant.restaurant.has_online_delivery === 1
+  );
+  }
+  generateRestHTML(filteredArray);
+}
+
 const priceLower = document.getElementById("priceLower");
 const outputLower = document.getElementById("lowerPriceValue");
 outputLower.innerHTML = priceLower.value; // Display the default slider value
