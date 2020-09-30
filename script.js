@@ -27,9 +27,10 @@ const filterPrice = (minPrice, maxPrice) => {
   generateRestHTML(filteredArray);
 };
 
-const hasOnlineDelivery = document.getElementById("onlineDelivery");
+let hasOnlineDelivery = document.getElementById("onlineDelivery");
 hasOnlineDelivery.onchange = () => {
-  const filteredArray = globalArray.restaurants
+  let filteredArray = globalArray.restaurants
+  console.log(hasOnlineDelivery.checked)
   if (hasOnlineDelivery.checked) {
     filteredArray = globalArray.restaurants.filter(
     (restaurant) =>
