@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <div class="logotype-container">
@@ -21,15 +23,20 @@
     <div class="border-1"></div>
     <h1 class="restaurants-title">American restaurants near You in Istanbul</h1>
     <div class="border-2"></div>
+    <div class="price-filter">
+        <input type="range" id="priceLower" name="lower-price" min="0" max="500" value="0">
+        <p>Min Price: <span id="lowerPriceValue"></span></p>
+        <input type="range" id="priceHigher" name="higher-price" min="0" max="500" value="500">
+        <p>Max Price: <span id="higherPriceValue"></span></p>
+    </div>
     <section class="restaurant-list" id="restaurantList">
 
     </section>
     <footer>
         <h3>© 2020 Olof Lindahl, Bäm Stugendal & Elisa Blomberg </h3>
         <p>Project Week 7 (Build a Food Review website) during the Technigo Frontend Bootcamp.</p>
-            
     </footer>
-
-<script src="./script.js"></script>    
+    <script src="./script.js"></script>
 </body>
+
 </html>

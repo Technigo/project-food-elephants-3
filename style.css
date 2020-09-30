@@ -71,6 +71,13 @@ header {
     width: 70%;
 }
 
+.price-filter {
+    padding-left: 100px;
+}
+
+input[type=range] {
+    color: black;
+}
 footer {
     text-align: center;
 }
