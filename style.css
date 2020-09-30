@@ -67,14 +67,10 @@ header {
     border-top-left-radius: 5%;
 }
 
-.rest-name {
-
-}
-
 .rest-address {
     width: 70%;
 }
 
-.rest-rating {
-
+footer {
+    text-align: center;
 }
