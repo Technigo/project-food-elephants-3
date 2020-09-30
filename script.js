@@ -19,14 +19,42 @@ fetch(zomatoApiUrlCuisine, apiHeader)
     //return data;
   });
 
-console.log(globalArray)
+console.log(globalArray);
 
 const filterPrice = (minPrice, maxPrice) => {
-    console.log(globalArray.restaurants)
-    const filteredArray = globalArray.restaurants.filter(restaurant => ((restaurant.restaurant.average_cost_for_two >= minPrice) && (restaurant.restaurant.average_cost_for_two <= maxPrice)));
-    console.log(filteredArray)
-    generateRestHTML(filteredArray);
-}
+  console.log(globalArray.restaurants);
+  const filteredArray = globalArray.restaurants.filter(
+    (restaurant) =>
+      restaurant.restaurant.average_cost_for_two >= minPrice &&
+      restaurant.restaurant.average_cost_for_two <= maxPrice
+  );
+  console.log(filteredArray);
+  generateRestHTML(filteredArray);
+};
+
+const priceLower = document.getElementById("priceLower");
+const outputLower = document.getElementById("lowerPriceValue");
+outputLower.innerHTML = priceLower.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+priceLower.oninput = function() {
+    console.log(this.value);
+    outputLower.innerHTML = this.value;
+    filterPrice(this.value, priceHigher.value);
+    return this.value;
+};
+
+const priceHigher = document.getElementById("priceHigher");
+const outputHigher = document.getElementById("higherPriceValue");
+outputHigher.innerHTML = priceHigher.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+priceHigher.oninput = function()  {
+    console.log(this.value);
+    outputHigher.innerHTML = this.value;
+    filterPrice(priceLower.value, this.value);
+    return this.value;
+};
 
 const generateRestHTML = (data) => {
   const restaurantsElement = document.getElementById("restaurantList");

@@ -12,6 +12,12 @@
         <nav class="navigation-container"></nav>
     </header>
     <h1 class="restaurants-title">American restaurants near you in Istanbul</h1>
+    <div>
+        <input type="range" id="priceLower" name="lower-price" min="0" max="500" value="0">
+        <p>Min Price: <span id="lowerPriceValue"></span></p>
+        <input type="range" id="priceHigher" name="higher-price" min="0" max="500" value="500">
+        <p>Max Price: <span id="higherPriceValue"></span></p>
+    </div>
     <section class="restaurant-list" id="restaurantList">
 
     </section>
