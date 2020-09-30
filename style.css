@@ -1,0 +1,80 @@
+
+body {
+    background: white;
+    font-family: Montserrat;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+}
+ 
+.logotype-container img {
+    width: 30%;
+    height: auto;
+    padding-left: 80px;
+}
+
+.navigation-container {
+    padding-right: 220px;
+}
+
+.navigation-container a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding-right: 15px;
+}
+
+.restaurants-title {
+  padding-left: 100px;
+  padding-top: 40px;
+}
+
+.border-1 {
+    border-bottom: rgba(172, 168, 168, 0.3) 1px solid;
+    margin-bottom: 40px;
+}
+
+.border-2 {
+    border-bottom: rgba(172, 168, 168, 0.3) 1px solid;
+    margin-right: 220px;
+    margin-left: 100px;
+    margin-bottom: 40px;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 100px;
+}
+
+.restaurant-container {
+    width: 30%;
+    height: auto; 
+    margin-bottom: 40px;
+} 
+
+.rest-image {
+    width: 70%;
+    height: auto;
+    border-top-right-radius: 5%;
+    border-top-left-radius: 5%;
+}
+
+.rest-name {
+
+}
+
+.rest-address {
+    width: 70%;
+}
+
+.rest-rating {
+
+}
