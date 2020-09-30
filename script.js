@@ -1,35 +1,49 @@
 const zomatoApiUrlCuisine =
-  "https://developers.zomato.com/api/v2.1/search?entity_id=59&entity_type=city&cuisines=1&count=10&start=10";
+  "https://developers.zomato.com/api/v2.1/search?entity_id=59&entity_type=city&cuisines=1&count=20&start=0";
 
 const apiHeader = {
   headers: {
-    "user-key": "f4409bfc8fdd4774e0e259204f26db78"
-  }
+    "user-key": "f4409bfc8fdd4774e0e259204f26db78",
+  },
 };
+
+let globalArray = null;
 
 fetch(zomatoApiUrlCuisine, apiHeader)
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-     generateRestHTML(data);
+    globalArray = data;
+    generateRestHTML(data.restaurants);
+    //return data;
   });
 
-  const generateRestHTML = (data) => {
-    const restaurantsElement = document.getElementById("restaurantList");
-    data.restaurants.forEach((restaurantContainer, index) => {
+console.log(globalArray)
 
-        const restName = restaurantContainer.restaurant.name;
-        const restAvgCost = restaurantContainer.restaurant.average_cost_for_two;
-        const restAddress = restaurantContainer.restaurant.location.address;
-        const restRating = restaurantContainer.restaurant.user_rating.aggregate_rating;
-        const restThumb = restaurantContainer.restaurant.thumb;
+const filterPrice = (minPrice, maxPrice) => {
+    console.log(globalArray.restaurants)
+    const filteredArray = globalArray.restaurants.filter(restaurant => ((restaurant.restaurant.average_cost_for_two >= minPrice) && (restaurant.restaurant.average_cost_for_two <= maxPrice)));
+    console.log(filteredArray)
+    generateRestHTML(filteredArray);
+}
 
-        restaurantsElement.innerHTML +=  `<div class="restaurant-container">
+const generateRestHTML = (data) => {
+  const restaurantsElement = document.getElementById("restaurantList");
+  restaurantsElement.innerHTML = "";
+  data.forEach((restaurantContainer, index) => {
+    const restName = restaurantContainer.restaurant.name;
+    const restAvgCost = restaurantContainer.restaurant.average_cost_for_two;
+    const restAddress = restaurantContainer.restaurant.location.address;
+    const restRating =
+      restaurantContainer.restaurant.user_rating.aggregate_rating;
+    const restThumb = restaurantContainer.restaurant.thumb;
+
+    restaurantsElement.innerHTML += `<div class="restaurant-container">
                                             <img class="rest-image" src="${restThumb}">
                                             <h2 class="rest-name">${restName}</h2>
                                             <p class="rest-address">${restAddress}</p>
                                             <p class="rest-rating">Rating: ${restRating}</p>
-                                        </div>`
-    });
-}
+                                        </div>`;
+  });
+};
